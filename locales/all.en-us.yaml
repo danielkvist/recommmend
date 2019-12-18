@@ -1,3 +1,4 @@
-# For more information on using i18n see: https://github.com/nicksnyder/go-i18n
-- id: welcome_greeting
-  translation: "Welcome to Buffalo (EN)"
+- id: do_recommendation
+  translation: "DO A RECOMMENDATION"
+- id: get_recommendation
+  translation: "GET A RECOMMENDATION"

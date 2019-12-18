@@ -1,0 +1,4 @@
+- id: do_recommendation
+  translation: "HAZ UNA RECOMENDAZIÓN"
+- id: get_recommendation
+  translation: "OBTÉN UNA RECOMENDAZIÓN"

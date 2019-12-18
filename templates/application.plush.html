@@ -1,21 +1,35 @@
 <!DOCTYPE html>
+  
+</body>
+</html>
 
 <html>
 
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta charset="utf-8" />
-		<title>Recommmend</title>
-		<%= stylesheetTag("application.css") %>
+    <meta charset="utf-8" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow, noarchive" />
 		<meta name="csrf-param" content="authenticity_token" />
 		<meta name="csrf-token" content="<%= authenticity_token %>" />
+
+    <title>Recommmend</title>
+    
+    <!-- CSS STYLES -->
+    <%= stylesheetTag("application.css") %>
+
+    <!-- FAVICON -->
 		<link rel="icon" href="<%= assetPath("images/favicon.ico") %>">
 	</head>
   
   <body>
-		<div class="container">
+		<div class="container-full">
 			<%= partial("flash.html") %> <%= yield %>
 		</div>
+
+    <footer class="container-full mx-5">
+      <span> Powered by <a href="http://gobuffalo.io/">gobuffalo.io</a></span>
+    </footer>
 
 		<%= javascriptTag("application.js") %>
   </body>
