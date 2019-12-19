@@ -1,0 +1,8 @@
+create_table("artists") {
+	t.Column("id", "uuid", {primary: true})
+	t.Column("artist_name", "string", {})
+	t.Column("artist_id", "string", {})
+	t.Column("spotify_url", "string", {})
+	t.Column("times_recommended", "integer", {})
+	t.Timestamps()
+}

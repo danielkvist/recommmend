@@ -1,0 +1,41 @@
+<div class="page-header">
+  <h1>Artists</h1>
+</div>
+<ul class="list-unstyled list-inline">
+  <li>
+    <%= linkTo(newArtistsPath(), {class: "btn btn-primary"}) { %>
+      Create New Artist
+    <% } %>
+  </li>
+</ul>
+
+<table class="table table-striped">
+  <thead>
+  <th>ArtistName</th>
+    <th>ArtistID</th>
+    <th>SpotifyURL</th>
+    <th>TimesRecommended</th>
+    <th>&nbsp;</th>
+  </thead>
+  <tbody>
+    <%= for (artist) in artists { %>
+      <tr>
+      <td><%= artist.ArtistName %></td>
+        <td><%= artist.ArtistID %></td>
+        <td><%= artist.SpotifyURL %></td>
+        <td><%= artist.TimesRecommended %></td>
+        <td>
+          <div class="pull-right">
+            <%= linkTo(artistPath({ artist_id: artist.ID }), {class: "btn btn-info", body: "View"}) %>
+            <%= linkTo(editArtistPath({ artist_id: artist.ID }), {class: "btn btn-warning", body: "Edit"}) %>
+            <%= linkTo(artistPath({ artist_id: artist.ID }), {class: "btn btn-danger", "data-method": "DELETE", "data-confirm": "Are you sure?", body: "Destroy"}) %>
+          </div>
+        </td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<div class="text-center">
+  <%= paginator(pagination) %>
+</div>
