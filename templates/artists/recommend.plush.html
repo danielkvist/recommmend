@@ -1,5 +1,7 @@
 <div class="row mt-5">
-	<form>
+	<form method="POST" action="<%= artistsRecommendPath %>">
+		<%= csrf() %>
+
 		<div class="form-group">
 			<label for="artist">
 				<input
