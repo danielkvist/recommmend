@@ -61,7 +61,10 @@ func App() *buffalo.App {
 
 		app.GET("/", HomeHandler)
 
-		app.Resource("/artists", ArtistsResource{})
+		// Artists related routes
+		artists := app.Group("/artists")
+		artists.GET("/recommend", ArtistsRecommendGet)
+
 		app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}
 

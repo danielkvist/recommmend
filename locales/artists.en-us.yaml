@@ -1,6 +1,2 @@
-- id: "artist.created.success"
-  translation: "Artist was successfully created."
-- id: "artist.updated.success"
-  translation: "Artist was successfully updated."
-- id: "artist.destroyed.success"
-  translation: "Artist was successfully destroyed."
+- id: "recommend"
+  translation: "RECOMMEND"
