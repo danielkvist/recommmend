@@ -18,4 +18,6 @@ require (
 	github.com/markbates/grift v1.1.0
 	github.com/pkg/errors v0.8.1
 	github.com/unrolled/secure v0.0.0-20190103195806-76e6d4e9b90c
+	github.com/zmb3/spotify v0.0.0-20191213135453-f2845aa57886
+	golang.org/x/oauth2 v0.0.0-20181203162652-d668ce993890
 )

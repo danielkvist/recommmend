@@ -35,11 +35,21 @@ func ArtistsRecommendPost(c buffalo.Context) error {
 	}
 
 	if ok {
-		c.Flash().Add("success", "Your recommendation has been added successfully!")
+		// TODO: Update artist
+		//	TODO: Add mutexes
+		c.Flash().Add("success", "Your recommendation has been readded successfully!")
 		return c.Redirect(http.StatusFound, "/")
 	}
 
-	// TODO: Check in API
+	// Check in API
+	artist, err = SpotifyClient.Search(name)
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
+	if err := tx.Create(artist); err != nil {
+		return errors.WithStack(err)
+	}
 
 	// Success
 	c.Flash().Add("success", "Your recommendation has been added successfully!")
