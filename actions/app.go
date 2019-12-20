@@ -64,6 +64,7 @@ func App() *buffalo.App {
 		// Artists related routes
 		artists := app.Group("/artists")
 		artists.GET("/recommend", ArtistsRecommendGet)
+		artists.POST("/recommend", ArtistsRecommendPost)
 
 		app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}

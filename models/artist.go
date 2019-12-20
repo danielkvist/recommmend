@@ -11,13 +11,13 @@ import (
 
 // Artist is used by pop to map your .model.Name.Proper.Pluralize.Underscore database table to your go code.
 type Artist struct {
-	ID               uuid.UUID `json:"id" db:"id"`
-	ArtistName       string    `json:"artist_name" db:"artist_name"`
-	ArtistID         string    `json:"artist_id" db:"artist_id"`
-	SpotifyURL       string    `json:"spotify_url" db:"spotify_url"`
-	TimesRecommended int       `json:"times_recommended" db:"times_recommended"`
-	CreatedAt        time.Time `json:"created_at" db:"created_at"`
-	UpdatedAt        time.Time `json:"updated_at" db:"updated_at"`
+	ID               uuid.UUID `json:"id" db:"id" form:"-"`
+	ArtistName       string    `json:"artist_name" db:"artist_name" form:"artist_name"`
+	ArtistID         string    `json:"artist_id" db:"artist_id" form:"-"`
+	SpotifyURL       string    `json:"spotify_url" db:"spotify_url" form:"-"`
+	TimesRecommended int       `json:"times_recommended" db:"times_recommended" form:"-"`
+	CreatedAt        time.Time `json:"created_at" db:"created_at" form:"-"`
+	UpdatedAt        time.Time `json:"updated_at" db:"updated_at" form:"-"`
 }
 
 // String is not required by pop and may be deleted
