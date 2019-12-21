@@ -1,4 +1,4 @@
 - id: do_recommendation
-  translation: "DO A RECOMMENDATION"
+  translation: "RECOMMEND"
 - id: get_recommendation
-  translation: "GET A RECOMMENDATION"
+  translation: "GET RECOMMENDATION"
