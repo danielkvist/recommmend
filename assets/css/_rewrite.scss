@@ -1,0 +1,48 @@
+.alert {
+	border-radius: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.alert-success {
+	cursor: pointer;
+	color: $white;
+	border-color: $green;
+	background-color: $green;
+}
+
+.btn {
+	background: $green;
+	border-color: $green;
+	padding: 1.15rem 5rem;
+}
+
+.btn:hover,
+.btn:active,
+.btn:focus {
+	background: lighten($color: $green, $amount: 10);
+	border-color: lighten($color: $green, $amount: 10);
+	box-shadow: none;
+	font-weight: bold;
+	outline-offset: -4px;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled):active:focus {
+	background: lighten($color: $green, $amount: 10);
+	border-color: lighten($color: $green, $amount: 10);
+	box-shadow: none;
+}
+
+.form-group {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.form-control-lg {
+	border-color: $white;
+	min-width: 100%;
+	border-radius: 0;
+}
