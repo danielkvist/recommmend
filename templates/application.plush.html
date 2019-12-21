@@ -21,7 +21,10 @@
     <!-- CSS STYLES -->
     <%= stylesheetTag("application.css") %>
 
-    <!-- FAVICON -->
+    <!-- FAVICONS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= assetPath("images/apple-touch-icon.png") %>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= assetPath("images/favicon-32x32.png") %>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= assetPath("images/favicon-16x16.png") %>">
 		<link rel="icon" href="<%= assetPath("images/favicon.ico") %>">
 	</head>
   
@@ -33,6 +36,7 @@
     <footer class="container">
       <span>Powered by <a href="http://gobuffalo.io/" alt="Buffalo">gobuffalo.io</a></span>
       <span>and <a href="https://spotify.com" alt="Spotify">spotify.com</a>.</span>
+      <span> Photo by Spencer Imbrock on <a href="https://unsplash.com/photos/JAHdPHMoaEA" alt="Unsplash">Unsplash</a>.</span>
       <br>
       <span>Made by <a href="https://dkvist.com" alt="Danielkvist">Danielkvist</a>.</span>
     </footer>
