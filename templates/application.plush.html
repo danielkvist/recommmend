@@ -14,6 +14,9 @@
 		<meta name="csrf-token" content="<%= authenticity_token %>" />
 
     <title>Recommmend</title>
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400&display=swap" rel="stylesheet"> 
     
     <!-- CSS STYLES -->
     <%= stylesheetTag("application.css") %>
@@ -23,12 +26,15 @@
 	</head>
   
   <body>
-		<div class="container-full">
+		<div class="container">
 			<%= partial("flash.html") %> <%= yield %>
 		</div>
 
-    <footer class="container-full mx-5">
-      <span> Powered by <a href="http://gobuffalo.io/">gobuffalo.io</a></span>
+    <footer class="container">
+      <span>Powered by <a href="http://gobuffalo.io/" alt="Buffalo">gobuffalo.io</a></span>
+      <span>and <a href="https://spotify.com" alt="Spotify">spotify.com</a>.</span>
+      <br>
+      <span>Made by <a href="https://dkvist.com" alt="Danielkvist">Danielkvist</a>.</span>
     </footer>
 
 		<%= javascriptTag("application.js") %>

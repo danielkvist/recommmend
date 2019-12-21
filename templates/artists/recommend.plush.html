@@ -1,25 +1,31 @@
-<div class="row mt-5">
-	<div class="col-md-12">
+<main class="row mb-5 h-90">
+	<div class="col-12 flex-center">
 		<form method="POST" action="<%= artistsRecommendPath %>">
 			<%= csrf() %>
 
 			<div class="form-group">
-				<label for="artist">
-					<input
-						type="text"
-						name="artist_name"
-						id="artist"
-						class="form-control"
-						placeholder="Artist"
-						autofocus
-						required
-					/>
-				</label>
+				<label for="artist"></label>
+				<input
+					type="text"
+					name="artist_name"
+					id="artist"
+					class="form-control-lg"
+					placeholder="Artist"
+					autofocus
+					required
+				/>
 			</div>
+			<div class="row">
+				<div class="col-12 flex-center">
+					<button type="submit" class="btn btn-primary mx-5 mt-3">
+						<%= t("recommend") %>
+					</button>
+				</div>
 
-			<button type="submit" class="btn btn-primary">
-				<%= t("recommend") %>
-			</button>
+				<div class="col-12 mt-5 flex-center">
+					<a href="<%= rootPath() %>" alt="Home"><span><i class="fas fa-arrow-left"></i></span> Go back</a>
+				</div>
+			</div>
 		</form>
 	</div>
-</div>
+</main>

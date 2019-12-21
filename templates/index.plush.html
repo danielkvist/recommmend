@@ -1,15 +1,16 @@
-<header class="row mt-5">
-	<div class="col text-center">
-		<h1>RECOMMMEND</h1>
+<header class="row h-60">
+	<div class="col-12 text-center flex-center">
+		<h1 class="title">RECOMMMEND</h1>
 	</div>
 </header>
 
-<main class="row mt-5">
+<main class="row mb-5 h-30">
 	<!-- DO A RECOMMENDATION -->
-	<div class="content-center col-6">
+	<div class="col col-md-6 flex-center">
 		<a
 			href="<%= artistsRecommendPath() %>""
-			class="btn btn-primary btn-lg"
+			alt="Recommend"
+			class="btn btn-primary btn-block px-5"
 			role="button"
 			aria-disabled="true"
 			><%= t("do_recommendation") %></a
@@ -17,13 +18,15 @@
 	</div>
 
 	<!-- GET A RECOMMENDATION -->
-	<div class="content-center col-6">
+	<div class="col col-md-6 flex-center">
 		<a
-			href="#"
-			class="btn btn-primary btn-lg"
+			href="<%= artistsRecommendedPath() %>""
+			alt="Recommendations"
+			class="btn btn-primary btn-block px-5"
 			role="button"
 			aria-disabled="true"
 			><%= t("get_recommendation") %></a
+			href="<%= artistsRecommendPath() %>""
 		>
 	</div>
 </main>

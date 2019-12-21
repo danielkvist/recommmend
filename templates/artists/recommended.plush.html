@@ -1,0 +1,29 @@
+<main class="row mb-5 h-90">
+	<div class="col-12 text-center flex-center">
+		<h1 class="title">SOMEBODY HAS RECOMMENDED TO YOU:</h1>
+	</div>
+
+	<div class="col-12 text-center">
+		<h2 class="subtitle mb-5"><%= artistName %></h2>
+
+		<div class="row">
+			<div class="col-12">
+				<a
+					href="<%= artistSpotifyURL %>"
+					alt="Go to Spotify"
+					class="btn btn-primary mt-5"
+					role="button"
+					aria-disabled="true"
+					target="_blank"
+					>CHECK ON SPOTIFY</a
+				>
+			</div>
+
+			<div class="col-12 mt-5 flex-center">
+				<a href="<%= rootPath() %>" alt="Home"
+					><span><i class="fas fa-arrow-left"></i></span> Go back</a
+				>
+			</div>
+		</div>
+	</div>
+</main>

@@ -1,16 +1,8 @@
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-12">
 		<%= for (k, messages) in flash { %> <%= for (msg) in messages { %>
-		<div class="alert alert-<%= k %> alert-dismissible fade show m-1 position-absolute" role="alert">
+		<div class="alert alert-<%= k %> position-absolute mt-5 mb-3" role="alert">
 			<%= msg %>
-			<button
-				type="button"
-				class="close"
-				data-dismiss="alert"
-				aria-label="Close"
-			>
-				<span aria-hidden="true">&times;</span>
-			</button>
 		</div>
 		<% } %> <% } %>
 	</div>
