@@ -35,6 +35,10 @@ func New() (*Client, error) {
 	return &Client{client: &client}, nil
 }
 
+// Search receives an artist's name and check if the artist
+// exist in the Spotify database. If not exist or there is any
+// problem while making the search it returns a non-nil error.
+// If the artist exist it returns a new *model.Artist filled up.
 func (c *Client) Search(artistName string) (*models.Artist, error) {
 	results, err := c.client.Search(artistName, spotify.SearchTypeArtist)
 	if err != nil {

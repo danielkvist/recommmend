@@ -55,3 +55,20 @@ func ArtistsRecommendPost(c buffalo.Context) error {
 	c.Flash().Add("success", "Your recommendation has been added successfully!")
 	return c.Redirect(http.StatusFound, "/")
 }
+
+// ArtistsRecommendedGet retrieves the last artist added
+// to the database and shows it as a recommendation.
+func ArtistsRecommendedGet(c buffalo.Context) error {
+	var artist models.Artist
+	tx := c.Value("tx").(*pop.Connection)
+
+	// Get last artist added from the DB
+	err := tx.Last(&artist)
+	if err != nil {
+		return errors.WithStack(err)
+	}
+
+	c.Set("artistName", strings.ToUpper(artist.ArtistName))
+	c.Set("artistSpotifyURL", artist.SpotifyURL)
+	return c.Render(http.StatusOK, r.HTML("artists/recommended.html"))
+}
