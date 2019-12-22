@@ -27,22 +27,24 @@ func ArtistsRecommendPost(c buffalo.Context) error {
 	name := strings.ToLower(c.Params().Get("artist_name"))
 
 	// Check if artist is already in DB
-	var artist *models.Artist
 	tx := c.Value("tx").(*pop.Connection)
-	ok, err := tx.Where("artist_name = ?", name).Exists(artist)
+	ok, err := tx.Where("artist_name = ?", name).Exists(&models.Artist{})
 	if err != nil {
 		return errors.WithStack(err)
 	}
 
 	if ok {
-		// TODO: Update artist
-		//	TODO: Add mutexes
-		c.Flash().Add("success", "Your recommendation has been readded successfully!")
+		err := tx.RawQuery("UPDATE artists SET times_recommended = times_recommended + 1 WHERE artist_name = ?", name).Exec()
+		if err != nil {
+			return errors.WithStack(err)
+		}
+
+		c.Flash().Add("success", "Your recommendation has been added successfully!")
 		return c.Redirect(http.StatusFound, "/")
 	}
 
-	// Check in API
-	artist, err = SpotifyClient.Search(name)
+	// Check on Spotify
+	artist, err := spotifyClient.SearchArtist(name)
 	if err != nil {
 		return errors.WithStack(err)
 	}
