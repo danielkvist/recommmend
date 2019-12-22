@@ -1,0 +1,13 @@
+version: 2
+
+jobs:
+  test:
+    docker:
+      - image: gobuffalo/buffalo:v0.15.0
+    working_directory: /go/src/github.com/my/app
+    steps:
+      - checkout
+      - run: go get github.com/gobuffalo/buffalo-plugins
+      - run: buffalo plugins install
+      - run: service postgresql start && buffalo db create -e test && buffalo db migrate -e test
+      - run: service postgresql start && buffalo test ./...
