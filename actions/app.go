@@ -19,8 +19,11 @@ import (
 // ENV is used to help switch settings based on where the
 // application is being run. Default is "development".
 var ENV = envy.Get("GO_ENV", "development")
-var app *buffalo.App
+
+// T is used for translation.
 var T *i18n.Translator
+
+var app *buffalo.App
 var spotifyClient spotify.Client
 
 // App is where all routes and middleware for buffalo
