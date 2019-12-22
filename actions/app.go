@@ -21,7 +21,7 @@ import (
 var ENV = envy.Get("GO_ENV", "development")
 var app *buffalo.App
 var T *i18n.Translator
-var SpotifyClient *spotify.Client
+var spotifyClient spotify.Client
 
 // App is where all routes and middleware for buffalo
 // should be defined.
@@ -37,7 +37,7 @@ func App() *buffalo.App {
 		if err != nil {
 			app.Stop(err)
 		}
-		SpotifyClient = client
+		spotifyClient = client
 
 		// Automatically redirect to SSL.
 		app.Use(forceSSL())
@@ -56,15 +56,16 @@ func App() *buffalo.App {
 		// Setup and use translations:
 		app.Use(translations())
 
+		// Main route
 		app.GET("/", HomeHandler)
 
-		// Artists related routes
+		// Artists routes
 		artists := app.Group("/artists")
 		artists.GET("/recommend", ArtistsRecommendGet)
 		artists.POST("/recommend", ArtistsRecommendPost)
 		artists.GET("/recommended", ArtistsRecommendedGet)
 
-		// serve files from the public directory
+		// Serve files from the public directory
 		app.ServeFiles("/", assetsBox)
 	}
 
