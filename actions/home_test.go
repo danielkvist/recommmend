@@ -1,8 +1,12 @@
 package actions
 
-func (as *ActionSuite) Test_HomeHandler() {
-	res := as.HTML("/").Get()
+import "net/http"
 
-	as.Equal(200, res.Code)
-	as.Contains(res.Body.String(), "Welcome to Buffalo")
+func (as *ActionSuite) Test_HomeHandler() {
+	testGETHandler(as, "/", http.StatusOK)
+}
+
+func testGETHandler(as *ActionSuite, route string, expectedStatus int) {
+	res := as.HTML(route).Get()
+	as.Equal(expectedStatus, res.Code)
 }
