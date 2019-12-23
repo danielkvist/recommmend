@@ -7,6 +7,12 @@ development:
   host: 127.0.0.1
   pool: 5
 
+production:
+  dialect: postgres
+  url: {{env "DATABASE_URL" }}
+  pool: 1
+  idle_pool: 1
+
 test:
   url: {{envOr "TEST_DATABASE_URL" "postgres://postgres:postgres@127.0.0.1:5432/recommmended_test?sslmode=disable"}}
 

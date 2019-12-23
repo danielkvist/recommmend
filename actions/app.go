@@ -80,7 +80,13 @@ func App() *buffalo.App {
 // request.
 func translations() buffalo.MiddlewareFunc {
 	var err error
-	if T, err = i18n.New(packr.New("app:locales", "../locales"), "en-US"); err != nil {
+
+	path := "../locales"
+	if ENV == "production" {
+		path = "./locales"
+	}
+
+	if T, err = i18n.New(packr.New("app:locales", path), "en-US"); err != nil {
 		app.Stop(err)
 	}
 	return T.Middleware()
