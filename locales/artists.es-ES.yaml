@@ -1,2 +1,6 @@
 - id: "recommend"
   translation: "RECOMENDAR"
+- id: "recommendation"
+  translation: "ALGUIEN HA RECOMENDADO"
+- id: "check_spotify"
+  translation: "REVÍSALO EN SPOTIFY"
