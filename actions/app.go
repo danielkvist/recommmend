@@ -61,6 +61,7 @@ func App() *buffalo.App {
 
 		// Main route
 		app.GET("/", HomeHandler)
+		app.GET("/about", AboutHandler)
 
 		// Artists routes
 		artists := app.Group("/artists")

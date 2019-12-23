@@ -12,10 +12,9 @@ var assetsBox *packr.Box
 
 func init() {
 	// Path changed for Google App Engine
+	assetsBox = packr.New("app:assets", "../public")
 	if ENV == "production" {
 		assetsBox = packr.New("app:assets", "./public")
-	} else {
-		assetsBox = packr.New("app:assets", "../public")
 	}
 
 	r = render.New(render.Options{
