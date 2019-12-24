@@ -26,17 +26,7 @@ func (a Artist) String() string {
 	return string(ja)
 }
 
-// Artists is not required by pop and may be deleted
-type Artists []Artist
-
-// String is not required by pop and may be deleted
-func (a Artists) String() string {
-	ja, _ := json.Marshal(a)
-	return string(ja)
-}
-
 // Validate gets run every time you call a "pop.Validate*" (pop.ValidateAndSave, pop.ValidateAndCreate, pop.ValidateAndUpdate) method.
-// This method is not required and may be deleted.
 func (a *Artist) Validate(tx *pop.Connection) (*validate.Errors, error) {
 	return validate.Validate(
 		&validators.StringIsPresent{Field: a.ArtistName, Name: "ArtistName"},
@@ -47,13 +37,11 @@ func (a *Artist) Validate(tx *pop.Connection) (*validate.Errors, error) {
 }
 
 // ValidateCreate gets run every time you call "pop.ValidateAndCreate" method.
-// This method is not required and may be deleted.
 func (a *Artist) ValidateCreate(tx *pop.Connection) (*validate.Errors, error) {
 	return validate.NewErrors(), nil
 }
 
 // ValidateUpdate gets run every time you call "pop.ValidateAndUpdate" method.
-// This method is not required and may be deleted.
 func (a *Artist) ValidateUpdate(tx *pop.Connection) (*validate.Errors, error) {
 	return validate.NewErrors(), nil
 }
