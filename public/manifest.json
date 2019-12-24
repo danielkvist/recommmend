@@ -1,8 +1,9 @@
 {
 	"name": "RECOMMMEND",
 	"short_name": "RECOMMMEND",
-	"start_url": ".",
+	"start_url": "/",
 	"display": "standalone",
+	"orientation": "landscape",
 	"background_color": "#1db954",
 	"description": "A simple webapp to recommend your favourite artists and get recommendations.",
 	"icons": [

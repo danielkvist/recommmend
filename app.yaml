@@ -10,9 +10,9 @@ handlers:
 - url: /robots.txt
   static_files: public/robots.txt
   upload: public/robots.txt
-- url: /manifest.webmanifest
-  static_files: public/manifest.webmanifest
-  upload: public/manifest.webmanifest
+- url: /manifest.json
+  static_files: public/manifest.json
+  upload: public/manifest.json
 - url: /assets
   static_dir: public/assets
 - url: /.*
