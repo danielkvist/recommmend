@@ -1,19 +1,23 @@
-runtime: go111
-
-#[START env_variables]
-env_variables:
-  PORT: 8080
-  GO_ENV: "production"
-#[END env_variables]
+runtime: go113
 
 handlers:
 - url: /robots.txt
   static_files: public/robots.txt
   upload: public/robots.txt
+
 - url: /manifest.webmanifest
   static_files: public/manifest.webmanifest
   upload: public/manifest.webmanifest
+  http_headers:
+    Content-Type: application/json
+
 - url: /assets
   static_dir: public/assets
+
 - url: /.*
   script: auto
+
+env_variables:
+  PORT: 8080
+  GO_ENV: production
+  NODE_ENV: production
