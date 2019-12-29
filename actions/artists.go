@@ -8,7 +8,6 @@ import (
 
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/pop"
-	"github.com/pkg/errors"
 )
 
 // ArtistsRecommendGet displays a form to add
@@ -30,13 +29,15 @@ func ArtistsRecommendPost(c buffalo.Context) error {
 	tx := c.Value("tx").(*pop.Connection)
 	ok, err := tx.Where("artist_name = ?", name).Exists(&models.Artist{})
 	if err != nil {
-		return errors.WithStack(err)
+		c.Logger().Error(err)
+		return err
 	}
 
 	if ok {
 		err := tx.RawQuery("UPDATE artists SET times_recommended = times_recommended + 1 WHERE artist_name = ?", name).Exec()
 		if err != nil {
-			return errors.WithStack(err)
+			c.Logger().Error(err)
+			return err
 		}
 
 		c.Flash().Add("success", "Your recommendation has been added successfully!")
@@ -46,11 +47,13 @@ func ArtistsRecommendPost(c buffalo.Context) error {
 	// Check on Spotify
 	artist, err := spotifyClient.SearchArtist(name)
 	if err != nil {
-		return errors.WithStack(err)
+		c.Logger().Error(err)
+		return err
 	}
 
 	if err := tx.Create(artist); err != nil {
-		return errors.WithStack(err)
+		c.Logger().Error(err)
+		return err
 	}
 
 	// Success
@@ -67,7 +70,8 @@ func ArtistsRecommendedGet(c buffalo.Context) error {
 	// Get last artist added from the DB
 	err := tx.Last(&artist)
 	if err != nil {
-		return errors.WithStack(err)
+		c.Logger().Error(err)
+		return err
 	}
 
 	c.Set("artistName", strings.ToUpper(artist.ArtistName))
