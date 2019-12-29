@@ -42,6 +42,9 @@ func App() *buffalo.App {
 		}
 		spotifyClient = client
 
+		// Adds custom error handling.
+		SetErrorHandling(app)
+
 		// Automatically redirect to SSL.
 		app.Use(forceSSL())
 
@@ -59,11 +62,11 @@ func App() *buffalo.App {
 		// Setup and use translations:
 		app.Use(translations())
 
-		// Main route
+		// Main routes.
 		app.GET("/", HomeHandler)
 		app.GET("/about", AboutHandler)
 
-		// Artists routes
+		// Artists routes.
 		artists := app.Group("/artists")
 		artists.GET("/recommend", ArtistsRecommendGet)
 		artists.POST("/recommend", ArtistsRecommendPost)
