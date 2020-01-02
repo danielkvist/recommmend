@@ -20,6 +20,10 @@ type client struct {
 	c *spotify.Client
 }
 
+const (
+	ArtistNotFound = "artist not found"
+)
+
 // New tries to create a valid Spotify client using
 // environment variables for auth. If it fails to get
 // a valid auth token it returns a non-nil error.
@@ -50,7 +54,7 @@ func (c *client) SearchArtist(name string) (*models.Artist, error) {
 	}
 
 	if results.Artists == nil || len(results.Artists.Artists) == 0 {
-		return nil, errors.Errorf("no results found searching for %q", name)
+		return nil, errors.New(ArtistNotFound)
 	}
 
 	var am models.Artist

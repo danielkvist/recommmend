@@ -1,9 +1,11 @@
 package actions
 
 import (
+	"fmt"
 	"net/http"
 	"strings"
 
+	"recommmended/actions/internal/spotify"
 	"recommmended/models"
 
 	"github.com/gobuffalo/buffalo"
@@ -47,6 +49,11 @@ func ArtistsRecommendPost(c buffalo.Context) error {
 	// Check on Spotify
 	artist, err := spotifyClient.SearchArtist(name)
 	if err != nil {
+		if err.Error() == spotify.ArtistNotFound {
+			c.Flash().Add("danger", fmt.Sprintf("Spotify says that they don't know who is %q!", name))
+			return c.Redirect(http.StatusFound, c.Request().URL.String())
+		}
+
 		c.Logger().Error(err)
 		return err
 	}
